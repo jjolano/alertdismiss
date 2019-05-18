@@ -10,16 +10,13 @@
 		NSLog(@"[alertdismiss] presenting UIAlertController");
 		#endif
 
-		// Check if this alert controller has any actions.
-		if([[alert actions] count] == 0) {
-			// Add a dismiss button.
-			UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {}];
-			[alert addAction:defaultAction];
+		// Add a dismiss button.
+		UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Force Dismiss" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {}];
+		[alert addAction:defaultAction];
 
-			#ifdef DEBUG
-			NSLog(@"[alertdismiss] added OK action");
-			#endif
-		}
+		#ifdef DEBUG
+		NSLog(@"[alertdismiss] added dismiss action");
+		#endif
 	}
 
 	%orig;

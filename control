@@ -1,7 +1,7 @@
 Package: me.jjolano.alertdismiss
 Name: AlertDismiss
 Depends: mobilesubstrate
-Version: 1.0
+Version: 1.01
 Architecture: iphoneos-arm
 Description: Allow action-less alerts to be dismissed.
 Maintainer: jjolano
