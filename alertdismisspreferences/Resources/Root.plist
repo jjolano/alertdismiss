@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>AlertDismiss Settings</string>
+			<key>footerText</key>
+			<string>Actionless views are (usually) alerts with no actions. Enabling this setting will limit the Force Dismiss action for those types of alerts. Otherwise, Force Dismiss will be present on all alerts regardless of number of actions.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>me.jjolano.alertdismiss</string>
+			<key>key</key>
+			<string>tweak_enabled</string>
+			<key>label</key>
+			<string>Enable</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>me.jjolano.alertdismiss</string>
+			<key>key</key>
+			<string>only_actionless</string>
+			<key>label</key>
+			<string>Limit to Actionless Views</string>
+		</dict>
+
+		<!-- Alert Controller Types -->
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Alert Controller Types</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>me.jjolano.alertdismiss</string>
+			<key>key</key>
+			<string>dismiss_alerts</string>
+			<key>label</key>
+			<string>Alerts</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>me.jjolano.alertdismiss</string>
+			<key>key</key>
+			<string>dismiss_actionsheets</string>
+			<key>label</key>
+			<string>Action Sheets</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>AlertDismiss</string>
+</dict>
+</plist>
