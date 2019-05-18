@@ -1,5 +1,5 @@
 ARCHS := armv7 armv7s arm64 arm64e
-TARGET := iphone:clang:11.2:8.0
+TARGET := iphone:clang:11.2:7.0
 
 include $(THEOS)/makefiles/common.mk
 
@@ -11,3 +11,5 @@ include $(THEOS_MAKE_PATH)/tweak.mk
 
 after-install::
 	install.exec "killall -9 SpringBoard"
+SUBPROJECTS += alertdismisspreferences
+include $(THEOS_MAKE_PATH)/aggregate.mk
