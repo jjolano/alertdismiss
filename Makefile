@@ -3,7 +3,7 @@ TARGET := iphone:clang:11.2:7.0
 
 include $(THEOS)/makefiles/common.mk
 
-TWEAK_NAME = alertdismiss
+TWEAK_NAME = AlertDismiss
 $(TWEAK_NAME)_FILES = Tweak.xm
 $(TWEAK_NAME)_CFLAGS = -fobjc-arc
 
