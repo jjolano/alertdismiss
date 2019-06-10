@@ -131,41 +131,45 @@ BOOL prefs_dismiss_actionsheets = YES;
 %end
 
 %ctor {
-	BOOL prefs_tweak_enabled = YES;
+	NSBundle *bundle = [NSBundle mainBundle];
 
-	NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/me.jjolano.alertdismiss.plist"];
+    if(bundle != nil) {
+        NSString *executablePath = [bundle executablePath];
 
-	if(prefs) {
-		if(prefs[@"tweak_enabled"]) {
-			prefs_tweak_enabled = [prefs[@"tweak_enabled"] boolValue];
-		}
+		if([executablePath hasPrefix:@"/Applications"] || [executablePath hasPrefix:@"/var/containers/Bundle/Application"]) {
+			BOOL prefs_tweak_enabled = YES;
 
-		if(prefs[@"only_actionless"]) {
-			prefs_only_actionless = [prefs[@"only_actionless"] boolValue];
-		}
+			NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/me.jjolano.alertdismiss.plist"];
 
-		if(prefs[@"dismiss_alerts"]) {
-			prefs_dismiss_alerts = [prefs[@"dismiss_alerts"] boolValue];
-		}
+			if(prefs) {
+				if(prefs[@"tweak_enabled"]) {
+					prefs_tweak_enabled = [prefs[@"tweak_enabled"] boolValue];
+				}
 
-		if(prefs[@"dismiss_actionsheets"]) {
-			prefs_dismiss_actionsheets = [prefs[@"dismiss_actionsheets"] boolValue];
-		}
-	}
+				if(prefs[@"only_actionless"]) {
+					prefs_only_actionless = [prefs[@"only_actionless"] boolValue];
+				}
 
-	if(prefs_tweak_enabled && (prefs_dismiss_alerts || prefs_dismiss_actionsheets)) {
-		if(kCFCoreFoundationVersionNumber <= kCFCoreFoundationVersionNumber_iOS_9_0) {
-			if(prefs_dismiss_actionsheets) {
-				%init(deprecated_actionsheets);
+				if(prefs[@"dismiss_alerts"]) {
+					prefs_dismiss_alerts = [prefs[@"dismiss_alerts"] boolValue];
+				}
+
+				if(prefs[@"dismiss_actionsheets"]) {
+					prefs_dismiss_actionsheets = [prefs[@"dismiss_actionsheets"] boolValue];
+				}
 			}
 
-			if(prefs_dismiss_alerts) {
-				%init(deprecated_alerts);
-			}
-		}
+			if(prefs_tweak_enabled && (prefs_dismiss_alerts || prefs_dismiss_actionsheets)) {
+				if(prefs_dismiss_actionsheets) {
+					%init(deprecated_actionsheets);
+				}
 
-		if(kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_8_0) {
-			%init(current);
+				if(prefs_dismiss_alerts) {
+					%init(deprecated_alerts);
+				}
+
+				%init(current);
+			}
 		}
 	}
 }
