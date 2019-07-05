@@ -136,7 +136,11 @@ BOOL prefs_dismiss_actionsheets = YES;
     if(bundle != nil) {
         NSString *executablePath = [bundle executablePath];
 
-		if([executablePath hasPrefix:@"/Applications"] || [executablePath hasPrefix:@"/var/containers/Bundle/Application"]) {
+		if([executablePath hasPrefix:@"/var/containers/Bundle/Application"]
+		|| [executablePath hasPrefix:@"/private/var/containers/Bundle/Application"]
+		|| [executablePath hasPrefix:@"/var/mobile/Containers/Bundle/Application"]
+		|| [executablePath hasPrefix:@"/private/var/mobile/Containers/Bundle/Application"]
+		|| [executablePath hasPrefix:@"/Applications"]) {
 			BOOL prefs_tweak_enabled = YES;
 
 			NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/me.jjolano.alertdismiss.plist"];

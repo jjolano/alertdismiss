@@ -1,7 +1,7 @@
 Package: me.jjolano.alertdismiss
 Name: AlertDismiss
 Depends: mobilesubstrate, preferenceloader, firmware (>= 8.0)
-Version: 1.0.3
+Version: 1.0.4
 Architecture: iphoneos-arm
 Description: Add a Force Dismiss button to any UIAlertController.
 Maintainer: jjolano
